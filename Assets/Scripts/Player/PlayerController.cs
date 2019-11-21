@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D body;
 
-    [SerializeField] Vector2 direction;
+    [SerializeField] private Vector2 direction;
 
     [SerializeField] private float speed = 4;
-    [SerializeField] GroundCheck groundCheck;
+    [SerializeField] private GroundCheck groundCheck;
 
     void Start()
     {
@@ -24,12 +24,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         direction = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
-        Debug.Log(body.velocity.x);
 
         if (Input.GetKeyDown("space") && IsGrounded())
         {
             body.velocity = new Vector2(body.velocity.x, 20);
-            Debug.Log("ICI");
         }
     }
 
