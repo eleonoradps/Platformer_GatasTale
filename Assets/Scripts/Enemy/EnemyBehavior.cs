@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    //[SerializeField] private Vector2 direction = new Vector2(0, 1);
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Vector3 leftOffset;
     [SerializeField] private Vector3 rightOffset;
@@ -36,20 +35,11 @@ public class EnemyBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        //body.velocity = direction;
+     
     }
 
     void Update()
     {
-        //if(transform.position.x < -2)
-        //{
-        //    direction.x = 1;
-        //}
-        //else if(transform.position.x > 0)
-        //{
-        //    direction.x = -1;
-        //}
-
        switch(state)
        {
             case State.IDLE:
