@@ -93,7 +93,6 @@ public class EnemyBehavior : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             state = State.CHASE_PLAYER;
-            targetChase = collision.transform;
         }
     }
 
