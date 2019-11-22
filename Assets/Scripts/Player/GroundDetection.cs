@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundCheck : MonoBehaviour
+public class GroundDetection : MonoBehaviour
 {
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] public bool isGrounded;
@@ -19,8 +19,8 @@ public class GroundCheck : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if character goes to the wall tagged Wall1, he won't be able to jump more
-        if (collision.gameObject.CompareTag("Wall1"))
+        // if character hits something with a tag, he won't be able to jump more
+        if (collision.gameObject.CompareTag("EnemyCollider"))
         {
             isGrounded = false;
         }

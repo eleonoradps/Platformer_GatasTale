@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 direction;
 
     [SerializeField] private float speed = 4;
-    [SerializeField] private GroundCheck groundCheck;
+    [SerializeField] private GroundDetection groundDetection;
 
     void Start()
     {
@@ -33,6 +33,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return groundCheck.isGrounded;
+        return groundDetection.isGrounded;
     }
 }
