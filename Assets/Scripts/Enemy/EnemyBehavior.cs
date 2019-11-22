@@ -49,14 +49,94 @@ public class EnemyBehavior : MonoBehaviour
         //{
         //    direction.x = -1;
         //}
+
        switch(state)
        {
             case State.IDLE:
+                state = State.PATROL;
                 break;
             case State.PATROL:
+                if(isGoingRight)
+                {
+                    Vector3 velocity = (rightTarget - transform.position).normalized * speed;
+                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+
+                    body.velocity = velocity;
+                    if (Vector3.Distance(transform.position, rightTarget) < 0.1f)
+                    {
+                        isGoingRight = false;
+                    }
+                }
+                else
+                {
+                    Vector3 velocity = (leftTarget - transform.position).normalized * speed;
+                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+
+                    body.velocity = velocity;
+
+                    if(Vector3.Distance(transform.position, leftTarget) < 0.1f)
+                    {
+                        isGoingRight = true;
+                    }
+                }
                 break;
             case State.CHASE_PLAYER:
+                {
+                    Vector3 velocity = (targetChase.position - transform.position).normalized * speed;
+                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+
+                    if(transform.position.x + velocity.x * Time.deltaTime >= rightTarget.x || transform.position.x + velocity.x * Time.deltaTime <= leftTarget.x)
+                    {
+                        body.velocity = new Vector2(0, 0);
+                    }
+                    else
+                    {
+                        body.velocity = velocity;
+                    }
+                }
                 break;
        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            state = State.CHASE_PLAYER;
+            targetChase = collision.transform;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            state = State.PATROL;
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        // Left sphere
+
+        if(leftTarget == Vector3.zero)
+        {
+            Gizmos.DrawWireSphere(transform.position + leftOffset, 1);
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(leftTarget, 1);
+        }
+
+        // Right sphere
+
+        if(rightTarget == Vector3.zero)
+        {
+            Gizmos.DrawWireSphere(transform.position + rightOffset, 1);
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(rightTarget, 1);
+        }
     }
 }
