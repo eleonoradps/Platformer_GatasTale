@@ -12,7 +12,16 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage (int dmg)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            TakeDamage(5);
+            Debug.Log("health points =" + currentHealth);
+        }
+    }
+
+    void TakeDamage (int dmg)
     {
         currentHealth -= dmg;
 

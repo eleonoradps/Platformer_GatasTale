@@ -19,7 +19,6 @@ public class GroundDetection : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if character hits something with a tag, he won't be able to jump more
         if (collision.gameObject.CompareTag("EnemyCollider"))
         {
             isGrounded = false;
