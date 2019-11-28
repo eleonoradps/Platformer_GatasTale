@@ -8,12 +8,12 @@ public class Parallax : MonoBehaviour
     [SerializeField] private float speedCoefficient;
     [SerializeField] private Vector3 lastPosition;
 
+
     void Start()
     {
         lastPosition = parallax.position;
     }
 
-    
     void Update()
     {
         transform.position = (new Vector2(speedCoefficient * Time.time + Camera.main.transform.position.x, transform.position.y));
