@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D body;
-    [SerializeField] private Vector3 leftOffset;
-    [SerializeField] private Vector3 rightOffset;
+    [SerializeField] private Vector2 leftOffset;
+    [SerializeField] private Vector2 rightOffset;
 
     [SerializeField] private float speed;
 
-    private Vector3 leftTarget;
-    private Vector3 rightTarget;
+    private Vector2 leftTarget;
+    private Vector2 rightTarget;
 
     [SerializeField] private bool isGoingRight = true;
     [SerializeField] private Transform targetChase;
@@ -48,33 +48,32 @@ public class EnemyBehavior : MonoBehaviour
             case State.PATROL:
                 if(isGoingRight)
                 {
-                    Vector3 velocity = (rightTarget - transform.position).normalized * speed;
-                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+                    Vector2 velocity = (rightTarget - transform.position).normalized * speed;
+                    velocity = new Vector2(velocity.x, body.velocity.y);
 
                     body.velocity = velocity;
-                    if (Vector3.Distance(transform.position, rightTarget) < 0.3f)
+                    if (Vector2.Distance(transform.position, rightTarget) < 0.3f)
                     {
                         isGoingRight = false;
                     }
                 }
                 else
                 {
-                    Vector3 velocity = (leftTarget - transform.position).normalized * speed;
-                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+                    Vector2 velocity = (leftTarget - transform.position).normalized * speed;
+                    velocity = new Vector2(velocity.x, body.velocity.y);
 
                     body.velocity = velocity;
 
-                    if(Vector3.Distance(transform.position, leftTarget) < 0.3f)
+                    if(Vector2.Distance(transform.position, leftTarget) < 0.3f)
                     {
                         isGoingRight = true;
-                        Debug.Log("droite");
                     }
                 }
                 break;
             case State.CHASE_PLAYER:
                 {
-                    Vector3 velocity = (targetChase.position - transform.position).normalized * speed;
-                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+                    Vector2 velocity = (targetChase.position - transform.position).normalized * speed;
+                    velocity = new Vector2(velocity.x, body.velocity.y);
 
                     if(transform.position.x + velocity.x * Time.deltaTime >= rightTarget.x || transform.position.x + velocity.x * Time.deltaTime <= leftTarget.x)
                     {
@@ -109,7 +108,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         // Left sphere
 
-        if(leftTarget == Vector3.zero)
+        if(leftTarget == Vector2.zero)
         {
             Gizmos.DrawWireSphere(transform.position + leftOffset, 1);
         }
@@ -120,7 +119,7 @@ public class EnemyBehavior : MonoBehaviour
 
         // Right sphere
 
-        if(rightTarget == Vector3.zero)
+        if(rightTarget == Vector2.zero)
         {
             Gizmos.DrawWireSphere(transform.position + rightOffset, 1);
         }
