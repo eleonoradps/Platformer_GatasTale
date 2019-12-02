@@ -28,8 +28,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
 
-        leftTarget = transform.position + leftOffset;
-        rightTarget = transform.position + rightOffset;
+        leftTarget = (Vector2)transform.position + leftOffset;
+        rightTarget = (Vector2)transform.position + rightOffset;
 
     }
 
@@ -48,7 +48,7 @@ public class EnemyBehavior : MonoBehaviour
             case State.PATROL:
                 if(isGoingRight)
                 {
-                    Vector2 velocity = (rightTarget - transform.position).normalized * speed;
+                    Vector2 velocity = (rightTarget - (Vector2)transform.position).normalized * speed;
                     velocity = new Vector2(velocity.x, body.velocity.y);
 
                     body.velocity = velocity;
@@ -59,7 +59,7 @@ public class EnemyBehavior : MonoBehaviour
                 }
                 else
                 {
-                    Vector2 velocity = (leftTarget - transform.position).normalized * speed;
+                    Vector2 velocity = (leftTarget - (Vector2)transform.position).normalized * speed;
                     velocity = new Vector2(velocity.x, body.velocity.y);
 
                     body.velocity = velocity;
@@ -110,7 +110,7 @@ public class EnemyBehavior : MonoBehaviour
 
         if(leftTarget == Vector2.zero)
         {
-            Gizmos.DrawWireSphere(transform.position + leftOffset, 1);
+            Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, 1);
         }
         else
         {
@@ -121,7 +121,7 @@ public class EnemyBehavior : MonoBehaviour
 
         if(rightTarget == Vector2.zero)
         {
-            Gizmos.DrawWireSphere(transform.position + rightOffset, 1);
+            Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, 1);
         }
         else
         {
