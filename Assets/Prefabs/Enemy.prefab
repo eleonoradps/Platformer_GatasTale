@@ -173,8 +173,6 @@ MonoBehaviour:
   leftOffset: {x: -22.76, y: 0, z: 0}
   rightOffset: {x: 22.94, y: 0, z: 0}
   speed: 6
-  leftTarget: {x: 0, y: 0, z: 0}
-  rightTarget: {x: 0, y: 0, z: 0}
   isGoingRight: 0
   targetChase: {fileID: 0}
 --- !u!50 &3646325760859412814

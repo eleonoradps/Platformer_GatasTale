@@ -10,8 +10,8 @@ public class EnemyBehavior : MonoBehaviour
 
     [SerializeField] private float speed;
 
-    [SerializeField] private Vector3 leftTarget;
-    [SerializeField] private Vector3 rightTarget;
+    private Vector3 leftTarget;
+    private Vector3 rightTarget;
 
     [SerializeField] private bool isGoingRight = true;
     [SerializeField] private Transform targetChase;
@@ -52,7 +52,7 @@ public class EnemyBehavior : MonoBehaviour
                     velocity = new Vector3(velocity.x, body.velocity.y, 0);
 
                     body.velocity = velocity;
-                    if (Vector3.Distance(transform.position, rightTarget) < 0.1f)
+                    if (Vector3.Distance(transform.position, rightTarget) < 0.3f)
                     {
                         isGoingRight = false;
                     }
@@ -64,9 +64,10 @@ public class EnemyBehavior : MonoBehaviour
 
                     body.velocity = velocity;
 
-                    if(Vector3.Distance(transform.position, leftTarget) < 0.1f)
+                    if(Vector3.Distance(transform.position, leftTarget) < 0.3f)
                     {
                         isGoingRight = true;
+                        Debug.Log("droite");
                     }
                 }
                 break;
