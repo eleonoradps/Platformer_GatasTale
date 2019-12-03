@@ -34815,11 +34815,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3646325760560426656, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3646325759510955451, guid: 3db8cf92cda4f5044b50119629aed2bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34877,39 +34872,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3646325760560426661, guid: 3db8cf92cda4f5044b50119629aed2bc,
         type: 3}
-      propertyPath: leftOffset.x
-      value: -39.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646325760560426661, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
       propertyPath: targetChase
       value: 
       objectReference: {fileID: 1080881090}
-    - target: {fileID: 3646325760560426661, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
-      propertyPath: rightOffset.x
-      value: 19.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646325760560426659, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4db7ac5f2b53f1140ae54c3383b40280, type: 2}
-    - target: {fileID: 3646325760449487843, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
-      propertyPath: m_Radius
-      value: 36.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646325760449487843, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646325760449487841, guid: 3db8cf92cda4f5044b50119629aed2bc,
-        type: 3}
-      propertyPath: m_TagString
-      value: EnemyCollider
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3db8cf92cda4f5044b50119629aed2bc, type: 3}
 --- !u!4 &1238158766 stripped
