@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         direction = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
 
         if (Input.GetKeyDown("space") && IsGrounded())
