@@ -16,6 +16,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private bool isGoingRight = true;
     [SerializeField] private Transform targetChase;
 
+    private SpriteRenderer spriteRendererEnemy;
+
     enum State
     {
         IDLE,
@@ -52,7 +54,8 @@ public class EnemyBehavior : MonoBehaviour
                     velocity = new Vector2(velocity.x, body.velocity.y);
 
                     body.velocity = velocity;
-                    if (Vector2.Distance(transform.position, rightTarget) < 0.3f)
+                    // Vector2.Distance
+                    if (Mathf.Abs(transform.position.x - rightTarget.x) < 0.3f)
                     {
                         isGoingRight = false;
                     }
@@ -64,7 +67,7 @@ public class EnemyBehavior : MonoBehaviour
 
                     body.velocity = velocity;
 
-                    if(Vector2.Distance(transform.position, leftTarget) < 0.3f)
+                    if(Mathf.Abs(transform.position.x - leftTarget.x) < 0.3f)
                     {
                         isGoingRight = true;
                     }
@@ -86,6 +89,14 @@ public class EnemyBehavior : MonoBehaviour
                 }
                 break;
        }
+        //if (velocity.x > 0.1f)
+        //{
+        //    spriteRendererEnemy.flipX = true;
+        //}
+        //else if (direction.x < -0.1f)
+        //{
+        //    spriteRendererEnemy.flipX = false;
+        //}
     }
 
     void OnTriggerEnter2D(Collider2D collision)

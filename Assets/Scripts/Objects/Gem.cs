@@ -28,8 +28,6 @@ public class Gem : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.GetComponent<PlayerController>();
-
             Destroy(gameObject);
         }
     }

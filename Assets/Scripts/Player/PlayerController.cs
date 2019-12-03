@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float speed = 4;
     [SerializeField] private GroundDetection groundDetection;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -23,12 +27,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
         direction = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
+        animator.SetFloat("Run", Mathf.Abs(direction.x));
 
         if (Input.GetKeyDown("space") && IsGrounded())
         {
             body.velocity = new Vector2(body.velocity.x, 20);
+            animator.SetBool("IsJumping", !IsGrounded());
+        }
+
+        if(direction.x > 0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(direction.x < -0.1f)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 

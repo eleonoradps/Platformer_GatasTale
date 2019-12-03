@@ -7,7 +7,6 @@ public class MenuManager : MonoBehaviour
 {
     public void LoadScene(string sceneName)
     {
-        Debug.Log("load putain)");
         SceneManager.LoadScene(sceneName);
     }
 
