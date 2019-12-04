@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GroundDetection groundDetection;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+
+    [SerializeField] int gem;
+    [SerializeField] TextMeshProUGUI textGemCounter;
 
     void Start()
     {
@@ -49,5 +55,11 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return groundDetection.isGrounded;
+    }
+
+    public void AddGem(int value)
+    {
+        gem += value;
+        textGemCounter.text = gem.ToString();
     }
 }

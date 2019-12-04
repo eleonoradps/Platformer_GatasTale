@@ -11,6 +11,7 @@ public class Gem : MonoBehaviour
     [SerializeField] private AnimationCurve animationCurve;
 
     [SerializeField] private float offsetY;
+    [SerializeField] int value = 1;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class Gem : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            collision.GetComponent<PlayerController>().AddGem(value);
             Destroy(gameObject);
         }
     }

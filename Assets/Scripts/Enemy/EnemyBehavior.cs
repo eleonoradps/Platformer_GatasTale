@@ -42,7 +42,16 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-       switch(state)
+        //if (velocity.x > 0.1f)
+        //{
+        //    spriteRendererEnemy.flipX = true;
+        //}
+        //else if (direction.x < -0.1f)
+        //{
+        //    spriteRendererEnemy.flipX = false;
+        //}
+
+        switch (state)
        {
             case State.IDLE:
                 state = State.PATROL;
@@ -58,6 +67,14 @@ public class EnemyBehavior : MonoBehaviour
                     if (Mathf.Abs(transform.position.x - rightTarget.x) < 0.3f)
                     {
                         isGoingRight = false;
+                    }
+                    if (velocity.x > 0.1f)
+                    {
+                        spriteRendererEnemy.flipX = true;
+                    }
+                    else if(velocity.x < -0.1f)
+                    {
+                        spriteRendererEnemy.flipX = false;
                     }
                 }
                 else
@@ -89,14 +106,6 @@ public class EnemyBehavior : MonoBehaviour
                 }
                 break;
        }
-        //if (velocity.x > 0.1f)
-        //{
-        //    spriteRendererEnemy.flipX = true;
-        //}
-        //else if (direction.x < -0.1f)
-        //{
-        //    spriteRendererEnemy.flipX = false;
-        //}
     }
 
     void OnTriggerEnter2D(Collider2D collision)
