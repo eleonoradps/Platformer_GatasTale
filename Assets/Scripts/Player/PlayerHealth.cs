@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
-    
+
+    private int enemyDamage = 1;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -16,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            TakeDamage(5);
+            TakeDamage(enemyDamage);
             Debug.Log("health points =" + currentHealth);
         }
     }

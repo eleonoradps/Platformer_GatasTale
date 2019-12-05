@@ -11,7 +11,7 @@ public class Gem : MonoBehaviour
     [SerializeField] private AnimationCurve animationCurve;
 
     [SerializeField] private float offsetY;
-    [SerializeField] int value = 1;
+    [SerializeField] private int value = 1;
 
     void Start()
     {

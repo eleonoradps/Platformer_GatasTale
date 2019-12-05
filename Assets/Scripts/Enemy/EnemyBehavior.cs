@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D body;
@@ -17,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private Transform targetChase;
 
     private SpriteRenderer spriteRendererEnemy;
+    private int enemyDamage = 1;
 
     enum State
     {
@@ -116,14 +116,21 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collider)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             state = State.PATROL;
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().LoseHealth(enemyDamage);
+        }
+    }
     void OnDrawGizmos()
     {
         // Left sphere

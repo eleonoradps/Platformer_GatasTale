@@ -16,8 +16,13 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    [SerializeField] int gem;
-    [SerializeField] TextMeshProUGUI textGemCounter;
+    [SerializeField] private int gem;
+    [SerializeField] private TextMeshProUGUI textGemCounter;
+
+    private int health;
+    [SerializeField] private TextMeshProUGUI textHealth;
+    private int enemyDamage;
+
 
     void Start()
     {
@@ -39,7 +44,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space") && IsGrounded())
         {
             body.velocity = new Vector2(body.velocity.x, 20);
-            animator.SetBool("IsJumping", !IsGrounded());
+            animator.SetTrigger("IsJumping");
         }
 
         if(direction.x > 0.1f)
@@ -61,5 +66,10 @@ public class PlayerController : MonoBehaviour
     {
         gem += value;
         textGemCounter.text = gem.ToString();
+    }
+    public void LoseHealth(int enemyDamage)
+    {
+        health -= enemyDamage;
+        textHealth.text = health.ToString();
     }
 }
