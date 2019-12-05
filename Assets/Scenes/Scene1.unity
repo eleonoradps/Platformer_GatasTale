@@ -682,7 +682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000024796, y: 11.3}
+  m_AnchoredPosition: {x: 0.000024796, y: 8.47}
   m_SizeDelta: {x: 25.18, y: 16.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404131506
@@ -769,7 +769,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -2.345337, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 404131506}
     characterCount: 1
@@ -1236,7 +1236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.347126, y: 10.215758, z: -20}
+  m_LocalPosition: {x: 14.356043, y: 10.215758, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1833709127}
@@ -1313,8 +1313,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -417.5, y: -213}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -434.4, y: -215.50002}
+  m_SizeDelta: {x: 75.2, y: 79.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540878536
 MonoBehaviour:
@@ -35430,7 +35430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6}
+  m_AnchoredPosition: {x: 0, y: -8.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313331411
@@ -35655,7 +35655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 408.5, y: -221}
+  m_AnchoredPosition: {x: 413, y: -215.5}
   m_SizeDelta: {x: 118, y: 124.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1371136363
@@ -36516,8 +36516,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4576b80b43a186946a3360a207cfd8e9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.272
+  m_Pitch: 1.2
   Loop: 1
   Mute: 0
   Spatialize: 0
