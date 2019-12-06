@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.041651815, b: 0.12059962, a: 1}
+  m_Color: {r: 0.85882354, g: 0.09019608, b: 0.08627451, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 1380206400}
   - component: {fileID: 1380206399}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MenuPlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 1433344936}
   - component: {fileID: 1433344935}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MenuQuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

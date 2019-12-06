@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyCollider
   - BigPlanet
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX
