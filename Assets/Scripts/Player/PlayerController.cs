@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,20 +44,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space") && IsGrounded())
         {
             body.velocity = new Vector2(body.velocity.x, 20);
-            animator.SetBool("IsJumping", true);
+            animator.SetTrigger("IsJumping");
         }
-        if(Mathf.Abs(body.velocity.y) < 0.1f)
-        {
-            animator.SetBool("IsJumping", false);
-        }
-        if(Mathf.Abs(body.velocity.y) > 0.1f)
-        {
-            animator.SetBool("IsFalling", true);
-        }
-        else
-        {
-            animator.SetBool("IsFalling", false);
-        }
+
         if(direction.x > 0.1f)
         {
             spriteRenderer.flipX = true;
@@ -65,11 +55,6 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-    }
-
-    public void OnLanding()
-    {
-        animator.SetBool("IsJumping", false);
     }
 
     private bool IsGrounded()
