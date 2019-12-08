@@ -128,7 +128,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().LoseHealth(enemyDamage);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage();
         }
     }
     void OnDrawGizmos()

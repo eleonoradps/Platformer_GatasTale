@@ -19,9 +19,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int gem;
     [SerializeField] private TextMeshProUGUI textGemCounter;
 
-    private int health;
     [SerializeField] private TextMeshProUGUI textHealth;
-    private int enemyDamage;
+    private int enemyDamage = 1;
+
+    [SerializeField] private float maxHealth;
+    private float currentHealth;
+
 
 
     void Start()
@@ -29,6 +32,9 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        textHealth.text = currentHealth.ToString();
     }
 
     void FixedUpdate()
@@ -70,6 +76,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            TakeDamage();
+        }
+    }
+
+    public void TakeDamage()
+    {
+        currentHealth -= enemyDamage;
+        textHealth.text = currentHealth.ToString();
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private bool IsGrounded()
     {
         return groundDetection.isGrounded;
@@ -80,9 +105,9 @@ public class PlayerController : MonoBehaviour
         gem += value;
         textGemCounter.text = gem.ToString();
     }
-    public void LoseHealth(int enemyDamage)
-    {
-        health -= enemyDamage;
-        textHealth.text = health.ToString();
-    }
+    //public void LoseHealth(int enemyDamage)
+    //{
+    //    currentHealth -= enemyDamage;
+    //    textHealth.text = currentHealth.ToString();
+    //}
 }
