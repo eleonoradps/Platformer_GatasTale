@@ -29,6 +29,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        spriteRendererEnemy = GetComponent<SpriteRenderer>();
 
         leftTarget = (Vector2)transform.position + leftOffset;
         rightTarget = (Vector2)transform.position + rightOffset;
@@ -42,17 +43,9 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        //if (velocity.x > 0.1f)
-        //{
-        //    spriteRendererEnemy.flipX = true;
-        //}
-        //else if (direction.x < -0.1f)
-        //{
-        //    spriteRendererEnemy.flipX = false;
-        //}
 
         switch (state)
-       {
+        {
             case State.IDLE:
                 state = State.PATROL;
                 break;
@@ -105,10 +98,18 @@ public class EnemyBehavior : MonoBehaviour
                     }
                 }
                 break;
-       }
+        }
+        if (body.velocity.x > 0.1f)
+        {
+            spriteRendererEnemy.flipX = true;
+        }
+        else if (body.velocity.x < -0.1f)
+        {
+            spriteRendererEnemy.flipX = false;
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+        void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
