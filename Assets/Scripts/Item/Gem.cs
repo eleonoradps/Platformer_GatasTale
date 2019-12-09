@@ -13,8 +13,15 @@ public class Gem : MonoBehaviour
     [SerializeField] private float offsetY;
     [SerializeField] private int value = 1;
 
+    [SerializeField] private AudioClip gemSound;
+    private AudioSource audioSource;
+
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         originalPosition = transform.position;
     }
 
@@ -29,8 +36,15 @@ public class Gem : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            //audioSource.Play();
             collision.GetComponent<PlayerController>().AddGem(value);
-            Destroy(gameObject);
+
+            if(gemSound)
+            {
+                audioSource.Play();
+            }
+            spriteRenderer.color = Color.clear;
+            Destroy(gameObject, audioSource.clip.length);
         }
     }
 

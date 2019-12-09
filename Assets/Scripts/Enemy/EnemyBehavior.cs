@@ -18,6 +18,9 @@ public class EnemyBehavior : MonoBehaviour
     private SpriteRenderer spriteRendererEnemy;
     private int enemyDamage = 1;
 
+    [SerializeField] private AudioClip enemySound;
+    private AudioSource audioSource;
+
     enum State
     {
         IDLE,
@@ -30,10 +33,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         spriteRendererEnemy = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         leftTarget = (Vector2)transform.position + leftOffset;
         rightTarget = (Vector2)transform.position + rightOffset;
-
     }
 
     void FixedUpdate()
@@ -109,11 +112,16 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-        void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             state = State.CHASE_PLAYER;
+
+            if(enemySound)
+            {
+                audioSource.Play();
+            }
         }
     }
 

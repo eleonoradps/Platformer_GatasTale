@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHealth;
     private float currentHealth;
 
+    private AudioSource audioSource;
+
 
 
     void Start()
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         currentHealth = maxHealth;
         textHealth.text = currentHealth.ToString();
