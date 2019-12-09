@@ -9,12 +9,18 @@ public class GroundDetection : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        isGrounded = collider != null;
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+        {
+            isGrounded = collider != null;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        isGrounded = false;
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+        {
+            isGrounded = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

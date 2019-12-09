@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioClip playerJumpSound;
     private AudioSource audioSource;
+
+    private bool playerDeath;
+    [SerializeField] private GameObject deathPanelUI;
 
     void Start()
     {
@@ -101,6 +105,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //public void PlayerDeathPanel()
+    //{
+    //    deathPanelUI.SetActive(true);
+    //    Time.timeScale = 0f;
+    //    playerDeath = true;
+    //}
+
+    public void ReturnMenuAfterDeath()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     private bool IsGrounded()
     {
         return groundDetection.isGrounded;

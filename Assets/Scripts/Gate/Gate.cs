@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
-    public GameObject winPanelUI;
+    [SerializeField] private GameObject winPanelUI;
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
