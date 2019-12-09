@@ -8,12 +8,9 @@ public class Gate : MonoBehaviour
     public GameObject winPanelUI;
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("vazy ta race");
         if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("fais le");
             ActivateWinPanel();
-            Debug.Log("active le panel putain");
         }
     }
 
