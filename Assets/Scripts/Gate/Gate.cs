@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 public class Gate : MonoBehaviour
 {
     public GameObject winPanelUI;
-    private void OnTriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        Debug.Log("vazy ta race");
+        if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if(winPanelUI.activeSelf)
-            {
-                ActivateWinPanel();
-            }
+            Debug.Log("fais le");
+            ActivateWinPanel();
+            Debug.Log("active le panel putain");
         }
     }
 
