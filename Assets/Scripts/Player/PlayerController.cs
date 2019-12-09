@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHealth;
     private float currentHealth;
 
+    [SerializeField] private AudioClip playerJumpSound;
     private AudioSource audioSource;
 
 
@@ -53,6 +54,11 @@ public class PlayerController : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, 20);
             animator.SetBool("IsJumping", true);
+
+            if(playerJumpSound)
+            {
+                audioSource.Play();
+            }
         }
         if(Mathf.Abs(body.velocity.y) < 0.1f)
         {
