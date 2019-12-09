@@ -39,14 +39,8 @@ public class EnemyBehavior : MonoBehaviour
         rightTarget = (Vector2)transform.position + rightOffset;
     }
 
-    void FixedUpdate()
-    {
-     
-    }
-
     void Update()
     {
-
         switch (state)
         {
             case State.IDLE:
@@ -59,7 +53,7 @@ public class EnemyBehavior : MonoBehaviour
                     velocity = new Vector2(velocity.x, body.velocity.y);
 
                     body.velocity = velocity;
-                    // Vector2.Distance
+                    
                     if (Mathf.Abs(transform.position.x - rightTarget.x) < 0.3f)
                     {
                         isGoingRight = false;
@@ -143,7 +137,6 @@ public class EnemyBehavior : MonoBehaviour
     void OnDrawGizmos()
     {
         // Left sphere
-
         if(leftTarget == Vector2.zero)
         {
             Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, 1);
@@ -154,7 +147,6 @@ public class EnemyBehavior : MonoBehaviour
         }
 
         // Right sphere
-
         if(rightTarget == Vector2.zero)
         {
             Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, 1);

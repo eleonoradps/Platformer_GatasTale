@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip playerJumpSound;
     private AudioSource audioSource;
 
-
-
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -92,14 +90,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.gameObject.layer == LayerMask.NameToLayer("Gate"))
-    //    {
-    //        collision.gameObject.GetComponent<Gate>().ActivateWinPanel();
-    //    }
-    //}
-
     public void TakeDamage()
     {
         currentHealth -= enemyDamage;
@@ -121,5 +111,4 @@ public class PlayerController : MonoBehaviour
         gem += value;
         textGemCounter.text = gem.ToString();
     }
-
 }

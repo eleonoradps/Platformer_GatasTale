@@ -25,7 +25,6 @@ public class Gem : MonoBehaviour
         originalPosition = transform.position;
     }
 
-    
     void Update()
     {
         offsetY = animationCurve.Evaluate(Time.time);
@@ -36,7 +35,6 @@ public class Gem : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //audioSource.Play();
             collision.GetComponent<PlayerController>().AddGem(value);
 
             if(gemSound)
