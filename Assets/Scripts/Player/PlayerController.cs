@@ -101,21 +101,15 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("DeathScene");
         }
     }
-
-    //public void PlayerDeathPanel()
-    //{
-    //    deathPanelUI.SetActive(true);
-    //    Time.timeScale = 0f;
-    //    playerDeath = true;
-    //}
 
     public void ReturnMenuAfterDeath()
     {
         SceneManager.LoadScene("MainMenu");
     }
+
     private bool IsGrounded()
     {
         return groundDetection.isGrounded;

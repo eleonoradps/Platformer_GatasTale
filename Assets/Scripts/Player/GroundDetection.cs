@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundDetection : MonoBehaviour
 {
     [SerializeField] private LayerMask platformLayerMask;
-    [SerializeField] public bool isGrounded;
+    [SerializeField] public bool isGrounded; //TODO get set
 
     private void OnTriggerStay2D(Collider2D collider)
     {
