@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadCreditsScene()
     {
-        SceneManager.LoadScene("Scene2");
+        SceneManager.LoadScene("CreditsScene");
     }
 
     public void ReturnToMenu()
