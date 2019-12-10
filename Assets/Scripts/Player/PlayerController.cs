@@ -16,20 +16,27 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    //Gem counter
     [SerializeField] private int gem;
     [SerializeField] private TextMeshProUGUI textGemCounter;
 
+    //Health counter
     [SerializeField] private TextMeshProUGUI textHealth;
     private int enemyDamage = 1;
 
+    //Player health
     [SerializeField] private float maxHealth;
     private float currentHealth;
 
     [SerializeField] private AudioClip playerJumpSound;
     private AudioSource audioSource;
 
+    //Player dies
     private bool playerDeath;
     [SerializeField] private GameObject deathPanelUI;
+
+    private const float threshold = 0.1f;
+    private const int jumpHeight = 20;
 
     void Start()
     {
@@ -52,9 +59,10 @@ public class PlayerController : MonoBehaviour
         direction = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
         animator.SetFloat("Run", Mathf.Abs(direction.x));
 
+        //Jump
         if (Input.GetKeyDown("space") && IsGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, 20); //TODO magic number
+            body.velocity = new Vector2(body.velocity.x, jumpHeight);
             animator.SetBool("IsJumping", true);
 
             if(playerJumpSound)
@@ -63,12 +71,13 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if(Mathf.Abs(body.velocity.y) < 0.1f) //TODO create a const float for the threshold
+        //Animation
+        if(Mathf.Abs(body.velocity.y) < threshold)
         {
             animator.SetBool("IsJumping", false);
         }
 
-        if(Mathf.Abs(body.velocity.y) > 0.1f)
+        if(Mathf.Abs(body.velocity.y) > threshold)
         {
             animator.SetBool("IsFalling", true);
         }
@@ -77,11 +86,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsFalling", false);
         }
  
-        if(direction.x > 0.1f)
+        //Player flip
+        if(direction.x > threshold)
         {
             spriteRenderer.flipX = true;
         }
-        else if(direction.x < -0.1f)
+        else if(direction.x < -threshold)
         {
             spriteRenderer.flipX = false;
         }
@@ -108,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return groundDetection.isGrounded;
+        return groundDetection.Is_Grounded;
     }
 
     public void AddGem(int value)

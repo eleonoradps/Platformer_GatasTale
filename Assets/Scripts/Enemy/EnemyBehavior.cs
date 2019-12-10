@@ -17,9 +17,12 @@ public class EnemyBehavior : MonoBehaviour
 
     private SpriteRenderer spriteRendererEnemy;
     private const int enemyDamage = 1;
+    private const float enemyThreshold = 0.1f;
 
     [SerializeField] private AudioClip enemySound;
     private AudioSource audioSource;
+    private int distance = 1;
+    private float position = 0.3f;
 
     enum State
     {
@@ -41,6 +44,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
+        //State of enemy
         switch (state)
         {
             case State.IDLE:
@@ -54,7 +58,7 @@ public class EnemyBehavior : MonoBehaviour
 
                     body.velocity = velocity;
                     
-                    if (Mathf.Abs(transform.position.x - rightTarget.x) < 0.3f) //TODO magic number
+                    if (Mathf.Abs(transform.position.x - rightTarget.x) < position)
                     {
                         isGoingRight = false;
                     }
@@ -66,7 +70,7 @@ public class EnemyBehavior : MonoBehaviour
 
                     body.velocity = velocity;
 
-                    if(Mathf.Abs(transform.position.x - leftTarget.x) < 0.3f) //TODO magic number
+                    if(Mathf.Abs(transform.position.x - leftTarget.x) < position)
                     {
                         isGoingRight = true;
                     }
@@ -90,12 +94,12 @@ public class EnemyBehavior : MonoBehaviour
                 break;
         }
 
-        //Flip sprite 
-        if (body.velocity.x > 0.1f)
+        //Enemy flip 
+        if (body.velocity.x > enemyThreshold)
         {
             spriteRendererEnemy.flipX = true;
         }
-        else if (body.velocity.x < -0.1f)
+        else if (body.velocity.x < -enemyThreshold)
         {
             spriteRendererEnemy.flipX = false;
         }
@@ -134,21 +138,21 @@ public class EnemyBehavior : MonoBehaviour
         // Left sphere
         if(leftTarget == Vector2.zero)
         {
-            Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, 1);
+            Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, distance);
         }
         else
         {
-            Gizmos.DrawWireSphere(leftTarget, 1);
+            Gizmos.DrawWireSphere(leftTarget, distance);
         }
 
         // Right sphere
         if(rightTarget == Vector2.zero)
         {
-            Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, 1);
+            Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, distance);
         }
         else
         {
-            Gizmos.DrawWireSphere(rightTarget, 1);
+            Gizmos.DrawWireSphere(rightTarget, distance);
         }
     }
 }
