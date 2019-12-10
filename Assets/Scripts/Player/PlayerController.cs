@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("space") && IsGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, 20);
+            body.velocity = new Vector2(body.velocity.x, 20); //TODO magic number
             animator.SetBool("IsJumping", true);
 
             if(playerJumpSound)
@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
                 audioSource.Play();
             }
         }
-        if(Mathf.Abs(body.velocity.y) < 0.1f)
+        //It's ugly\/
+        if(Mathf.Abs(body.velocity.y) < 0.1f) //TODO create a const float for the threshold
         {
             animator.SetBool("IsJumping", false);
         }
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //TODO this shouldn't be here
     public void ReturnMenuAfterDeath()
     {
         SceneManager.LoadScene("MainMenu");

@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private Transform targetChase;
 
     private SpriteRenderer spriteRendererEnemy;
-    private int enemyDamage = 1;
+    private int enemyDamage = 1; //TODO if not changing -> const
 
     [SerializeField] private AudioClip enemySound;
     private AudioSource audioSource;
@@ -54,17 +54,9 @@ public class EnemyBehavior : MonoBehaviour
 
                     body.velocity = velocity;
                     
-                    if (Mathf.Abs(transform.position.x - rightTarget.x) < 0.3f)
+                    if (Mathf.Abs(transform.position.x - rightTarget.x) < 0.3f) //TODO magic number
                     {
                         isGoingRight = false;
-                    }
-                    if (velocity.x > 0.1f)
-                    {
-                        spriteRendererEnemy.flipX = true;
-                    }
-                    else if(velocity.x < -0.1f)
-                    {
-                        spriteRendererEnemy.flipX = false;
                     }
                 }
                 else
@@ -74,7 +66,7 @@ public class EnemyBehavior : MonoBehaviour
 
                     body.velocity = velocity;
 
-                    if(Mathf.Abs(transform.position.x - leftTarget.x) < 0.3f)
+                    if(Mathf.Abs(transform.position.x - leftTarget.x) < 0.3f) //TODO magic number
                     {
                         isGoingRight = true;
                     }
@@ -85,7 +77,8 @@ public class EnemyBehavior : MonoBehaviour
                     Vector2 velocity = (targetChase.position - transform.position).normalized * speed;
                     velocity = new Vector2(velocity.x, body.velocity.y);
 
-                    if(transform.position.x + velocity.x * Time.deltaTime >= rightTarget.x || transform.position.x + velocity.x * Time.deltaTime <= leftTarget.x)
+                    if(transform.position.x + velocity.x * Time.deltaTime >= rightTarget.x || 
+                       transform.position.x + velocity.x * Time.deltaTime <= leftTarget.x)
                     {
                         body.velocity = new Vector2(0, 0);
                     }
@@ -96,6 +89,8 @@ public class EnemyBehavior : MonoBehaviour
                 }
                 break;
         }
+
+        //Flip sprite 
         if (body.velocity.x > 0.1f)
         {
             spriteRendererEnemy.flipX = true;
