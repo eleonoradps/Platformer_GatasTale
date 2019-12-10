@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private Transform targetChase;
 
     private SpriteRenderer spriteRendererEnemy;
-    private int enemyDamage = 1; //TODO if not changing -> const
+    private const int enemyDamage = 1;
 
     [SerializeField] private AudioClip enemySound;
     private AudioSource audioSource;

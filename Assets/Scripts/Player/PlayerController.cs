@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.Play();
             }
         }
-        //It's ugly\/
+        
         if(Mathf.Abs(body.velocity.y) < 0.1f) //TODO create a const float for the threshold
         {
             animator.SetBool("IsJumping", false);
@@ -104,12 +104,6 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("DeathScene");
         }
-    }
-
-    //TODO this shouldn't be here
-    public void ReturnMenuAfterDeath()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
     private bool IsGrounded()
