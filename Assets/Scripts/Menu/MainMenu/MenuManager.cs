@@ -5,35 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private bool goToCredits = false;
-    private GameObject creditsPanelUI;
-
-    private void Update()
-    {
-        if(goToCredits)
-        {
-            GoToCredits();
-        }
-        else
-        {
-            GoBackToMenu();
-        }
-    }
-    public void GoToCredits()
-    {
-        creditsPanelUI.SetActive(true);
-        goToCredits = true;
-    }
-
-    public void GoBackToMenu()
-    {
-        creditsPanelUI.SetActive(false);
-        goToCredits = false;
-    }
-
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadCreditsScene()
+    {
+        SceneManager.LoadScene("Scene2");
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Quit()
